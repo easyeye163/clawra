@@ -98,7 +98,7 @@ This ensures consistent appearance across all generated images.
 
 - **Image Generation**: Local Stable Diffusion via SD WebUI API
 - **Messaging**: OpenClaw Gateway API
-- **Supported Platforms**: Discord, Telegram, WhatsApp, Slack, Signal, MS Teams
+- **Supported Platforms**: Discord, Telegram, WhatsApp, Slack, Signal, MS Teams, Feishu
 - **ControlNet Model**: ip-adapter-faceid-plusv2_sd15
 - **SD Checkpoint**: realisticVisionV60B1
 
@@ -159,6 +159,7 @@ openclaw doctor --generate-gateway-token
 | Slack | `#channel-name` | `#random` |
 | Signal | Phone number | `+1234567890` |
 | MS Teams | Channel reference | (varies) |
+| Feishu | Chat ID or conversation ID | `ou_xxxxx`, `oc_xxxxx` |
 
 ## Error Handling
 
