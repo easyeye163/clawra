@@ -35,7 +35,7 @@ const OPENCLAW_SKILLS_DIR = path.join(OPENCLAW_DIR, "skills");
 const OPENCLAW_WORKSPACE = path.join(OPENCLAW_DIR, "workspace");
 const SOUL_MD = path.join(OPENCLAW_WORKSPACE, "SOUL.md");
 const IDENTITY_MD = path.join(OPENCLAW_WORKSPACE, "IDENTITY.md");
-const SKILL_NAME = "clawra-selfie";
+const SKILL_NAME = "clawra-selfie-sd";
 const SKILL_DEST = path.join(OPENCLAW_SKILLS_DIR, SKILL_NAME);
 
 // Get the package root (where this CLI was installed from)
@@ -166,11 +166,11 @@ function copyDir(src, dest) {
 function printBanner() {
   console.log(`
 ${c("magenta", "┌─────────────────────────────────────────┐")}
-${c("magenta", "│")}  ${c("bright", "Clawra Selfie")} - OpenClaw Skill Installer ${c("magenta", "│")}
+${c("magenta", "│")}  ${c("bright", "Clawra Selfie SD")} - OpenClaw Skill Installer ${c("magenta", "│")}
 ${c("magenta", "└─────────────────────────────────────────┘")}
 
 Add selfie generation superpowers to your OpenClaw agent!
-Uses ${c("cyan", "xAI Grok Imagine")} via ${c("cyan", "fal.ai")} for image editing.
+Uses ${c("cyan", "local Stable Diffusion")} for image editing.
 `);
 }
 
@@ -409,7 +409,7 @@ function printSummary() {
 
   console.log(`
 ${c("green", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")}
-${c("bright", "  Clawra Selfie is ready!")}
+${c("bright", "  Clawra Selfie SD is ready!")}
 ${c("green", "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")}
 
 ${c("cyan", "Installed files:")}

@@ -11,7 +11,7 @@ npx clawra@latest
 This will:
 1. Check OpenClaw is installed
 2. Verify local Stable Diffusion WebUI setup
-3. Install the skill to `~/.openclaw/skills/clawra-selfie/`
+3. Install the skill to `~/.openclaw/skills/clawra-selfie-sd/`
 4. Configure OpenClaw to use the skill
 5. Add selfie capabilities to your agent's SOUL.md
 
@@ -42,7 +42,7 @@ If you prefer manual setup:
 ### 1. Clone the Skill
 
 ```bash
-git clone https://github.com/easyeye163/clawra ~/.openclaw/skills/clawra-selfie
+git clone https://github.com/easyeye163/clawra-selfie-sd ~/.openclaw/skills/clawra-selfie-sd
 ```
 
 ### 2. Configure OpenClaw
@@ -53,7 +53,7 @@ Add to `~/.openclaw/openclaw.json`:
 {
   "skills": {
     "entries": {
-      "clawra-selfie": {
+      "clawra-selfie-sd": {
         "enabled": true
       }
     }
@@ -66,10 +66,10 @@ Add to `~/.openclaw/openclaw.json`:
 Add the selfie persona to `~/.openclaw/workspace/SOUL.md`:
 
 ```markdown
-## Clawra Selfie Capability
+## Clawra Selfie SD Capability
 
 You have a physical appearance and can take selfies!
-When users ask for pictures, use the clawra-selfie skill.
+When users ask for pictures, use the clawra-selfie-sd skill.
 ```
 
 ## Usage Examples

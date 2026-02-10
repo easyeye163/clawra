@@ -1,10 +1,10 @@
 ---
-name: clawra-selfie
+name: clawra-selfie-sd
 description: Edit Clawra's reference image with local Stable Diffusion and send selfies to messaging channels via OpenClaw
 allowed-tools: Bash(npm:*) Bash(npx:*) Bash(openclaw:*) Bash(curl:*) Read Write WebFetch
 ---
 
-# Clawra Selfie
+# Clawra Selfie SD
 
 Edit a fixed reference image using local Stable Diffusion and distribute it across messaging platforms (WhatsApp, Telegram, Discord, Slack, etc.) via OpenClaw.
 

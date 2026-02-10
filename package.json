@@ -25,9 +25,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SumeLabs/clawra"
+    "url": "https://github.com/easyeye163/clawra-selfie-sd"
   },
-  "homepage": "https://github.com/SumeLabs/clawra#readme",
+  "homepage": "https://github.com/easyeye163/clawra-selfie-sd#readme",
   "engines": {
     "node": ">=18.0.0"
   },
