@@ -5,7 +5,7 @@ Add selfie generation superpowers to your OpenClaw agent using local Stable Diff
 ## Quick Start
 
 ```bash
-npx clawra@latest
+npx clawra-selfie-sd@latest
 ```
 
 This will:
