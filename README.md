@@ -88,11 +88,22 @@ Once installed, your agent responds to:
 
 The skill uses a local reference image:
 
-```
-assets/clawra.png
-```
+![Clawra Reference Image](assets/clawra.png)
 
-This ensures consistent appearance across all generated images.
+This ensures consistent appearance across all generated images using ControlNet's IP-Adapter FaceID model.
+
+### Custom Reference Image
+
+You can replace the default reference image with your own:
+
+1. **Replace the file**: Copy your image to `~/.openclaw/skills/clawra-selfie-sd/assets/clawra.png`
+2. **Update via OpenClaw**: The agent can dynamically change the reference image through skill commands
+
+**Tips for best results:**
+- Use a clear front-facing photo with good lighting
+- The reference image works best with a single person
+- Recommended size: 512x768 or similar portrait ratio
+- The IP-Adapter FaceID model preserves facial features while allowing outfit/environment changes
 
 ## Technical Details
 
