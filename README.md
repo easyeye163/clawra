@@ -1,6 +1,6 @@
 # Clawra
-<img width="300"  alt="image" src="https://github.com/user-attachments/assets/41512c51-e61d-4550-b461-eed06a1b0ec8" />
 
+Add selfie generation superpowers to your OpenClaw agent using local Stable Diffusion.
 
 ## Quick Start
 
@@ -10,7 +10,7 @@ npx clawra@latest
 
 This will:
 1. Check OpenClaw is installed
-2. Guide you to get a fal.ai API key
+2. Verify local Stable Diffusion WebUI setup
 3. Install the skill to `~/.openclaw/skills/clawra-selfie/`
 4. Configure OpenClaw to use the skill
 5. Add selfie capabilities to your agent's SOUL.md
@@ -22,33 +22,30 @@ Clawra Selfie enables your OpenClaw agent to:
 - **Send photos** across all messaging platforms (Discord, Telegram, WhatsApp, etc.)
 - **Respond visually** to "what are you doing?" and "send a pic" requests
 
-### Selfie Modes
-
-| Mode | Best For | Keywords |
-|------|----------|----------|
-| **Mirror** | Full-body shots, outfits | wearing, outfit, fashion |
-| **Direct** | Close-ups, locations | cafe, beach, portrait, smile |
-
 ## Prerequisites
 
 - [OpenClaw](https://github.com/openclaw/openclaw) installed and configured
-- [fal.ai](https://fal.ai) account (free tier available)
+- [Stable Diffusion WebUI](https://github.com/AUTOMATIC1111/stable-diffusion-webui) running locally
+- ControlNet extension with `ip-adapter-faceid-plusv2_sd15` model
+
+### Stable Diffusion Requirements
+
+Ensure Stable Diffusion WebUI is running at `http://127.0.0.1:7860` with:
+- Realistic Vision V6.0 B1 checkpoint
+- ControlNet extension installed
+- IP-Adapter FaceID Plus V2 model
 
 ## Manual Installation
 
 If you prefer manual setup:
 
-### 1. Get API Key
-
-Visit [fal.ai/dashboard/keys](https://fal.ai/dashboard/keys) and create an API key.
-
-### 2. Clone the Skill
+### 1. Clone the Skill
 
 ```bash
-git clone https://github.com/SumeLabs/clawra ~/.openclaw/skills/clawra-selfie
+git clone https://github.com/easyeye163/clawra ~/.openclaw/skills/clawra-selfie
 ```
 
-### 3. Configure OpenClaw
+### 2. Configure OpenClaw
 
 Add to `~/.openclaw/openclaw.json`:
 
@@ -57,17 +54,14 @@ Add to `~/.openclaw/openclaw.json`:
   "skills": {
     "entries": {
       "clawra-selfie": {
-        "enabled": true,
-        "env": {
-          "FAL_KEY": "your_fal_key_here"
-        }
+        "enabled": true
       }
     }
   }
 }
 ```
 
-### 4. Update SOUL.md
+### 3. Update SOUL.md
 
 Add the selfie persona to `~/.openclaw/workspace/SOUL.md`:
 
@@ -87,14 +81,15 @@ Once installed, your agent responds to:
 "Send a pic wearing a cowboy hat"
 "What are you doing right now?"
 "Show me you at a coffee shop"
+"换成红色衣服"
 ```
 
 ## Reference Image
 
-The skill uses a fixed reference image hosted on CDN:
+The skill uses a local reference image:
 
 ```
-https://cdn.jsdelivr.net/gh/SumeLabs/clawra@main/assets/clawra.png
+assets/clawra.png
 ```
 
 This ensures consistent appearance across all generated images.
@@ -104,6 +99,26 @@ This ensures consistent appearance across all generated images.
 - **Image Generation**: Local Stable Diffusion via SD WebUI API
 - **Messaging**: OpenClaw Gateway API
 - **Supported Platforms**: Discord, Telegram, WhatsApp, Slack, Signal, MS Teams
+- **ControlNet Model**: ip-adapter-faceid-plusv2_sd15
+- **SD Checkpoint**: realisticVisionV60B1
+
+## Command Line Usage
+
+Generate images directly using the TypeScript script:
+
+```bash
+npx ts-node scripts/txt2img.ts <prompt> [seed]
+```
+
+### Examples
+
+```bash
+# Basic usage
+npx ts-node scripts/txt2img.ts "换成红色衣服"
+
+# With custom seed
+npx ts-node scripts/txt2img.ts "换成红色衣服" 12345
+```
 
 ## Project Structure
 
@@ -117,8 +132,47 @@ clawra/
 │   └── assets/          # Reference image
 ├── templates/
 │   └── soul-injection.md # Persona template
+├── scripts/
+│   └── txt2img.ts       # CLI image generation script
+├── assets/
+│   └── clawra.png       # Reference image
 └── package.json
 ```
+
+## Configuration
+
+### OpenClaw Gateway Token
+
+Generate a gateway token:
+
+```bash
+openclaw doctor --generate-gateway-token
+```
+
+### Supported Platforms
+
+| Platform | Channel Format | Example |
+|----------|----------------|---------|
+| Discord | `#channel-name` or channel ID | `#general`, `123456789` |
+| Telegram | `@username` or chat ID | `@mychannel`, `-100123456` |
+| WhatsApp | Phone number (JID format) | `1234567890@s.whatsapp.net` |
+| Slack | `#channel-name` | `#random` |
+| Signal | Phone number | `+1234567890` |
+| MS Teams | Channel reference | (varies) |
+
+## Error Handling
+
+- **Stable Diffusion not running**: Ensure SD WebUI is accessible at `http://127.0.0.1:7860`
+- **ControlNet model missing**: Install `ip-adapter-faceid-plusv2_sd15` via SD WebUI
+- **OpenClaw send failed**: Verify gateway is running and channel exists
+- **Image generation failed**: Check prompt content and SD WebUI logs
+
+## Tips
+
+1. **Outfit prompts**: "wearing a santa hat", "in a business suit", "wearing a summer dress"
+2. **Location prompts**: "a cozy cafe with warm lighting", "a sunny beach at sunset"
+3. **Batch sending**: Generate once, send to multiple channels
+4. **Seeds**: Use the same seed for reproducible results
 
 ## License
 
